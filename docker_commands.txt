@@ -1,0 +1,17 @@
+# Build a Docker image from the Dockerfile in the current directory
+docker build -t myToDoApp .
+
+# Check if port 3000 is being used by any process
+netstat -aon | findstr :3000
+
+# If necessary, terminate the process using port 3000 (replace 2504 with the actual PID found)
+taskkill /PID 2504 /F
+
+# Run a Docker container from the 'myToDoApp' image, mapping host port 3000 to container port 3000
+docker run -it -d -p 3000:3000 myToDoApp
+
+# List all Docker images on your local machine
+docker images
+
+# List all currently running Docker containers
+docker ps
